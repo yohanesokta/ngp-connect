@@ -6,7 +6,7 @@ project chat room saya tahun 2024 untuk room chat dan juga colaborasi antara dua
 
 ### TODO:
 
--   UI SYSTEM ( Side Bar (40%) ✅ )
+-   UI SYSTEM ( Side Bar (70%) ✅ )
 -   Prisma DB (Postgree)
 -   Socket IO
 -   Connect Google Meet

@@ -8,6 +8,10 @@
 :root {
     --color-white: #ffffff;
     --color-primary: #4e69ca;
-    --color-opas-primary:rgb(125, 140, 227);
+    --color-opas-primary: rgb(130, 148, 249);
     --side-min-size: 60px;
+    --color-dark: #00000;
+}
+.room-container {
+    display: flex;
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import "./Styles/sidebar.css";
+import "./Styles/sidebar.scss";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import faRightFromBracket from "@fortawesome/fontawesome-svg-core"
@@ -44,13 +44,14 @@ const hidden = () => {
     if (items.classList.contains('side-full')) {
         items.classList.remove('side-full');
         items.classList.add('side-hide')
+        document.querySelector(".sidebar").width = `${50}px`
     } else {
         items.classList.remove('side-hide')
         items.classList.add('side-full')
     }
 }
 const SideBar = () => {
-    return (
+    return (<>
         <div className="sidebar">
             <div className="side-full" id="sidebar-container">
                 <Profile name="Yohanes Oktanio" info="XII - Multimedia" />
@@ -67,8 +68,9 @@ const SideBar = () => {
                 </div>
                 </a>
             </div>
-            <button onClick={hidden}></button>
+            <button className="hidden" onClick={hidden}></button>
         </div >
+    </>
     );
 };
 

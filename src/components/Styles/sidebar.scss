@@ -1,11 +1,14 @@
 .sidebar {
     transition: .2s all;    
     z-index: 10;
-    width: 315px;
+    width: auto;
+    position: relative;
     height: 100vh;
     display: flex;
-    position: fixed;
-    button {
+    .hidden {
+            z-index: 14;
+            position: absolute;
+        right: -15px;
         z-index: 11;
         outline: none;
         width: 15px;
@@ -19,14 +22,14 @@
             var(--color-white)
         );
     }
-    button:hover {
+    .hidden:hover {
         opacity: 0.5;
     }
 }
 .side-full {
     position: relative;
     background-color: var(--color-white);
-    box-shadow: 1px 1px 10px rgb(201, 201, 201);
+    box-shadow: .2px 1px 3px gray;
     width: 300px;
     height: 100vh;
     .profile-container {
