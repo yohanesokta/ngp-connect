@@ -1,11 +1,14 @@
+'use client'
+
 import "./Styles/sidebar.css";
 import Image from "next/image";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import faRightFromBracket from "@fortawesome/fontawesome-svg-core"
 const Profile = ({ name, info }) => {
     return (<div className="profile-container">
         <div className="profile">
             <div className="foto-profile">
-                <Image src={"/foto.webp"} width={80} height={80} />
+                <Image src={"/foto.webp"} width={80} height={80} alt="Images" />
             </div>
             <div className="name-profile">
                 <h5>{name}</h5>
@@ -18,12 +21,12 @@ const Profile = ({ name, info }) => {
     </div>)
 }
 
-const Kelas = ({ name, desc }) => {
+const Kelas = ({ name, desc, image }) => {
     return (
         <div className="kelas-container">
             <a href="" className="kelas">
                 <div className="image-thumb">
-
+                    {(image) ? <Image src={image} alt="alt" width={300} height={300} /> : null}
                 </div>
                 <div className="nama-kelas">
                     <div className="text">
@@ -36,23 +39,36 @@ const Kelas = ({ name, desc }) => {
     )
 }
 
+const hidden = () => {
+    const items = document.getElementById('sidebar-container')
+    if (items.classList.contains('side-full')) {
+        items.classList.remove('side-full');
+        items.classList.add('side-hide')
+    } else {
+        items.classList.remove('side-hide')
+        items.classList.add('side-full')
+    }
+}
 const SideBar = () => {
     return (
-        <div>
-            <div className="side-full-container">
-                <Profile name="Yohanes Oktanio" info="Software Enginer" />
+        <div className="sidebar">
+            <div className="side-full" id="sidebar-container">
+                <Profile name="Yohanes Oktanio" info="XII - Multimedia" />
+                <div className="btn-kelas">
+                    <button>
+                        Tambah Kelas
+                    </button>
+                </div>
                 <div className="kelas-box">
                     <Kelas name="Pemrograman" desc="Lorem Ipsum dolor ..." />
-                    <Kelas name="Pemrograman" desc="Lorem Ipsum dolor ..." />
-                    <Kelas name="Pemrograman" desc="Lorem Ipsum dolor ..." />
-                    <Kelas name="Pemrograman" desc="Lorem Ipsum dolor ..." />
-                    <Kelas name="Pemrograman" desc="Lorem Ipsum dolor ..." />
                 </div>
-                <a href="" className="logout-container">
-                    <p>Keluar</p>
+                <a href="" className="logout-container"><div className="icons">
+                    <i className="fa-solid fa-right-from-bracket"></i> <p>Logout</p>
+                </div>
                 </a>
             </div>
-        </div>
+            <button onClick={hidden}></button>
+        </div >
     );
 };
 
