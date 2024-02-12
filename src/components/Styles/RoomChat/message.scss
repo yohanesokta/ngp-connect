@@ -1,9 +1,9 @@
 .message-field {
     position: relative;
-    width: 45%;
+    width: 50%;
     margin: 10px 0;
     display: flex;
-    margin-left: 5%;
+    margin-left: 2.5%;
     .profile {
         margin: 0 10px;
         height: 100%;
@@ -29,6 +29,9 @@
         font-size: 10pt;
         border-radius: 20px 20px 20px 20px;
         padding: 10px 20px;
+        p{
+            width: 100%;
+        }
     }
 }
 .field {

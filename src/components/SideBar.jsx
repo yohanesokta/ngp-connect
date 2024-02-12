@@ -1,9 +1,8 @@
 'use client'
 
 import "./Styles/sidebar.scss";
+import { signOut } from "next-auth/react"
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import faRightFromBracket from "@fortawesome/fontawesome-svg-core"
 const Profile = ({ name, info }) => {
     return (<div className="profile-container">
         <div className="profile">
@@ -63,10 +62,10 @@ const SideBar = () => {
                 <div className="kelas-box">
                     <Kelas name="Pemrograman" desc="Lorem Ipsum dolor ..." />
                 </div>
-                <a href="" className="logout-container"><div className="icons">
+                <button onClick={signOut} className="logout-container"><div className="icons">
                     <i className="fa-solid fa-right-from-bracket"></i> <p>Logout</p>
                 </div>
-                </a>
+                </button>
             </div>
             <button className="hidden" onClick={hidden}></button>
         </div >

@@ -167,6 +167,9 @@
     .logout-container {
         position: absolute;
         bottom: 0;
+        outline: none;
+        border: none;
+        transition: .2s ease all;
         background-color: var(--color-primary);
         width: 100%;
         height: 50px;
@@ -189,6 +192,9 @@
                 color: var(--color-white);
             }
         }
+    }
+    .logout-container:hover{
+        opacity: .9;
     }
 }
 
@@ -243,8 +249,12 @@
         bottom: 0;
         width: 100%;
         height: 50px;
+        background-color: var(--color-primary);
         display: flex;
         text-decoration: none;
+
+        outline: none;
+        border: none;
         color: white;
         .icons{
             margin: auto;

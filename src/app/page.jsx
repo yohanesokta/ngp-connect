@@ -1,13 +1,12 @@
-import RoomChat from "@/components/RoomChat/RoomChat"
-import SideBar from "@/components/SideBar"
-
+'use client'
+import {useSession , signIn } from "next-auth/react"
+import { useRouter } from "next/navigation"
 const page = () => {
-  return (
-    <div className="room-container">
-      <SideBar />
-      <RoomChat />
-    </div>
-  )
+ const {data : session} =  useSession();
+ if(session) useRouter().push('/channels') 
+  return (<>
+    <button onClick={signIn}>Sign</button>
+  </>)
 }
 
 export default page
