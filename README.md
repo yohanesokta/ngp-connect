@@ -1,16 +1,20 @@
-## _NGP_ Connect
+<h1 align="center">
+   🐧 NGP <a href="https://github.com/yohanesokta/NGP.connect">connect</a>
+</h1>
+<p align="center">
+project chat room untuk chat dan juga colaborasi antara dua orang atau lebih dalam satu tim beserta google meet dan juga live code
+</p>
 
-project chat room saya tahun 2024 untuk room chat dan juga colaborasi antara dua orang atau lebih dalam satu tim beserta google meet dan juga live code
 
 ---
 
 ### TODO:
 
--   UI SYSTEM ( Side Bar (70%) ✅ )
--   Prisma DB (Postgree)
+-   UI SYSTEM ( Message Field ✅ )
+-   Prisma DB ( 30 % )
 -   Socket IO
 -   Connect Google Meet
--   Login System
+-   Login System (Google Oauth ✅ )
 -   Groubing User
 -   Optimizing
 
