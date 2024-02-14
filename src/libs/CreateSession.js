@@ -9,6 +9,7 @@ export const CreateSession =async (input,session) => {
             image_profile : session.user.image,
             class : []
         }
+        try{
         await fetch('/api/user/create',{
             method: "POST",
             headers : {
@@ -17,6 +18,8 @@ export const CreateSession =async (input,session) => {
             body : JSON.stringify({
                 "data" : user
             })
-        });
+        });}finally{
+            window.location.href = "/channels"
+        }
     }
 }

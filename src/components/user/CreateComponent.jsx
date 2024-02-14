@@ -1,8 +1,29 @@
 'use client'
 import "@/components/Styles/user/create.scss"
 import { useSession } from "next-auth/react"
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
+import { HandleCreateButton } from "./HandleCreateButton"
 import { CreateSession } from "@/libs/CreateSession"
+
+const CheckUsers = async(session) => {
+  try{
+    let data = await fetch('/api/user/create/available',{
+      method : "POST",
+      headers:{
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify({
+        sub : session.user.sub
+      })
+    })
+    data = await data.json()
+    if (data.value == 1) {
+      window.location.href = "/channels"
+    }
+  }catch(error){
+    console.log(error)
+  }
+}
 
 const CreateComponent = () => {
   const { data: session } = useSession()
@@ -10,16 +31,13 @@ const CreateComponent = () => {
   let inputRef = useRef([])
   const InputCheks = (event) => {
     const val = event.target.value
-
-    if (val.length > 3) {
-      buttonRef.current.classList.remove('ev-false')
-      buttonRef.current.classList.add('ev-true')
-    } else {
-      buttonRef.current.classList.add('ev-false')
-      buttonRef.current.classList.remove('ev-true')
-    }
+    const btn = buttonRef.current.classList
+    HandleCreateButton(val,btn)
   }
 
+  useEffect(()=>{
+    CheckUsers(session)
+  })
   const Submited = (event) => {
     event.preventDefault();
     CreateSession(inputRef , session)
@@ -36,7 +54,7 @@ const CreateComponent = () => {
           <input type="text" id="roll" name="roll" placeholder="roll kesukaanmu" required onInput={InputCheks} ref={inputRef} />
         </div>
         <div className="flex-container">
-          <button type="submit" id="ev" className="ev-true" ref={buttonRef}>Lest'Go</button>
+          <button type="submit" id="ev" className="ev-false" ref={buttonRef}>Lest'Go</button>
         </div>
       </form>
     </div>
