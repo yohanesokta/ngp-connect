@@ -20,8 +20,9 @@ model Post {
 
 model Users {
   id            Int      @id @default(autoincrement())
-  sub           Int      @unique
+  sub           String      @unique
   username      String
+  email         String
   role          String
   image_profile String
   class         String[]
