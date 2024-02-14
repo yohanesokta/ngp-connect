@@ -1,7 +1,5 @@
 'use client'
-
-import "./Styles/sidebar.scss";
-import { signOut } from "next-auth/react"
+import "../Styles/RoomChat/sidebar.scss"
 import Image from "next/image";
 const Profile = ({ name, info }) => {
     return (<div className="profile-container">
@@ -62,10 +60,10 @@ const SideBar = () => {
                 <div className="kelas-box">
                     <Kelas name="Pemrograman" desc="Lorem Ipsum dolor ..." />
                 </div>
-                <button onClick={signOut} className="logout-container"><div className="icons">
+                <a href="/user/signout" className="logout-container"><div className="icons">
                     <i className="fa-solid fa-right-from-bracket"></i> <p>Logout</p>
                 </div>
-                </button>
+                </a>
             </div>
             <button className="hidden" onClick={hidden}></button>
         </div >

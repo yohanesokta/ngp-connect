@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth/next";
 import { providers } from "@/app/api/auth/[...nextauth]/route";
 
-export async function getServerSideProps() {
+export async function getServerSideProps(req) {
   const session = await getServerSession(providers);
 
   if (!session) {
@@ -12,7 +12,6 @@ export async function getServerSideProps() {
       },
     };
   }
-
 
   return await session
 }
