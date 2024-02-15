@@ -3,7 +3,7 @@ import { signIn, useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 const page = () => {
   const {data : session} =  useSession()
-  if(session) useRouter().push('/channels') 
+  if(session) useRouter().push('/user/create') 
 
   return (<>
     <button onClick={signIn}>Sign</button>

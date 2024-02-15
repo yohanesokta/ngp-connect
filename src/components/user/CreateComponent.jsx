@@ -5,25 +5,6 @@ import { useEffect, useRef } from "react"
 import { HandleCreateButton } from "./HandleCreateButton"
 import { CreateSession } from "@/libs/CreateSession"
 
-const CheckUsers = async(session) => {
-  try{
-    let data = await fetch('/api/user/create/available',{
-      method : "POST",
-      headers:{
-        "Content-Type" : "application/json"
-      },
-      body: JSON.stringify({
-        sub : session.user.sub
-      })
-    })
-    data = await data.json()
-    if (data.value == 1) {
-      window.location.href = "/channels"
-    }
-  }catch(error){
-    console.log(error)
-  }
-}
 
 const CreateComponent = () => {
   const { data: session } = useSession()
@@ -35,9 +16,6 @@ const CreateComponent = () => {
     HandleCreateButton(val,btn)
   }
 
-  useEffect(()=>{
-    CheckUsers(session)
-  })
   const Submited = (event) => {
     event.preventDefault();
     CreateSession(inputRef , session)

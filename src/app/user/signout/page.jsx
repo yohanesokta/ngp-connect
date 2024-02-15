@@ -1,5 +1,6 @@
 'use client'
 
+import LoadingPage from "@/components/user/LoadingPage";
 import { signOut, useSession } from "next-auth/react"
 import { useRouter } from "next/router";
 import { useEffect } from "react"
@@ -12,7 +13,7 @@ const page = () => {
     },[])} else {window.location.href = "/"}
 
   return (
-    <div>Logout Send , Please Wait !</div>
+    <div><LoadingPage/></div>
   )
 }
 

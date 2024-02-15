@@ -10,7 +10,7 @@ project chat room untuk chat dan juga colaborasi antara dua orang atau lebih dal
 
 ### TODO:
 
--   UI SYSTEM ( Message Field ✅ )
+-   UI SYSTEM ( Message Field | Loading State✅ )
 -   Prisma DB ( 30 % )
 -   Socket IO
 -   Connect Google Meet
