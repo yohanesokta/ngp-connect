@@ -1,11 +1,14 @@
 'use client'
 import "../Styles/RoomChat/sidebar.scss"
+import { useSelector } from "react-redux"
 import Image from "next/image";
-const Profile = ({ name, info }) => {
+import CreateClass from "./CreateClass";
+import { useRef } from "react";
+const Profile = ({ name, info, image }) => {
     return (<div className="profile-container">
         <div className="profile">
             <div className="foto-profile">
-                <Image src={"/foto.webp"} width={80} height={80} alt="Images" />
+                <Image src={image ?? "/"} width={80} height={80} alt="Images" />
             </div>
             <div className="name-profile">
                 <h5>{name}</h5>
@@ -47,18 +50,30 @@ const hidden = () => {
         items.classList.add('side-full')
     }
 }
+
+
+
 const SideBar = () => {
+    const data = useSelector((state) => state.userReducer)
+    const tambahKelasRef = useRef()
+    const TambahKelas = () =>{
+        tambahKelasRef.current.classList.remove('hidden')
+    }
     return (<>
         <div className="sidebar">
+            <CreateClass refComp={tambahKelasRef}/>
             <div className="side-full" id="sidebar-container">
-                <Profile name="Yohanes Oktanio" info="XII - Multimedia" />
+                <Profile name={data.userdata.username} info={data.userdata.role} image={data.userdata.image_profile} />
                 <div className="btn-kelas">
-                    <button>
+                    <button onClick={TambahKelas}>
                         Tambah Kelas
                     </button>
                 </div>
                 <div className="kelas-box">
-                    <Kelas name="Pemrograman" desc="Lorem Ipsum dolor ..." />
+                    {data.userdata.class?.map((clas, i) => {
+                        return (
+                            <Kelas name="Pemrograman" desc="Lorem Ipsum dolor ..." />)
+                    })}
                 </div>
                 <a href="/user/signout" className="logout-container"><div className="icons">
                     <i className="fa-solid fa-right-from-bracket"></i> <p>Logout</p>
