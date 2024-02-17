@@ -3,7 +3,7 @@
 import RoomChat from "@/components/RoomChat/RoomChat"
 import SideBar from "@/components/RoomChat/SideBar"
 import LoadingPage from "@/components/user/LoadingPage"
-import { FetchProperty } from "@/libs/FetchProperty"
+import { FetchProperty } from "@/libs/property/FetchProperty"
 import { useSession } from "next-auth/react"
 import { useEffect, useState } from "react"
 import {UpdateUser} from "@/redux/features/user-slice"

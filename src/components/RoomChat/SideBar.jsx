@@ -61,7 +61,7 @@ const SideBar = () => {
     }
     return (<>
         <div className="sidebar">
-            <CreateClass refComp={tambahKelasRef}/>
+            <CreateClass refComp={tambahKelasRef} dataClass={data.userdata}/>
             <div className="side-full" id="sidebar-container">
                 <Profile name={data.userdata.username} info={data.userdata.role} image={data.userdata.image_profile} />
                 <div className="btn-kelas">
@@ -72,7 +72,7 @@ const SideBar = () => {
                 <div className="kelas-box">
                     {data.userdata.class?.map((clas, i) => {
                         return (
-                            <Kelas name="Pemrograman" desc="Lorem Ipsum dolor ..." />)
+                            <Kelas key={i} name="Pemrograman" desc="Lorem Ipsum dolor ..." />)
                     })}
                 </div>
                 <a href="/user/signout" className="logout-container"><div className="icons">
