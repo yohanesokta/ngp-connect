@@ -6,8 +6,8 @@ import LoadingPage from "@/components/user/LoadingPage"
 import { FetchProperty } from "@/libs/property/FetchProperty"
 import { useSession } from "next-auth/react"
 import { useEffect, useState } from "react"
-import {UpdateUser} from "@/redux/features/user-slice"
-import {useDispatch} from "react-redux"
+import { UpdateUser } from "@/redux/features/user-slice"
+import { useDispatch } from "react-redux"
 
 const Container = () => {
   return (<> <div className="room-container">
@@ -16,7 +16,7 @@ const Container = () => {
   </div></>)
 }
 const Fetching = async (session, stateData, stateComponents, UserData) => {
-  if (!UserData) {
+  if (session.user.sub) {
     let data = await fetch("/api/user/info", FetchProperty(session))
     data = await data.json()
     stateData(data.data[0])
@@ -32,20 +32,20 @@ const page = () => {
   const [Comp, SetComp] = useState(<LoadingPage />)
   const dispatch = useDispatch()
 
-  
- 
+
+
   useEffect(() => {
     Fetching(session, SetUserData, SetComp, UserData)
   }, [session])
 
-  useEffect(()=>{
-    dispatch(UpdateUser(UserData))
-  },[UserData])
+  useEffect(() => {
+      dispatch(UpdateUser(UserData))
+  }, [UserData])
 
 
   return (
     <>
-    {Comp}
+      {Comp}
     </>
   )
 }

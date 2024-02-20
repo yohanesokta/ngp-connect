@@ -4,6 +4,7 @@ import { useSelector } from "react-redux"
 import Image from "next/image";
 import CreateClass from "./CreateClass";
 import { useRef } from "react";
+import Kelas from "./ClassComponent";
 const Profile = ({ name, info, image }) => {
     return (<div className="profile-container">
         <div className="profile">
@@ -21,23 +22,7 @@ const Profile = ({ name, info, image }) => {
     </div>)
 }
 
-const Kelas = ({ name, desc, image }) => {
-    return (
-        <div className="kelas-container">
-            <a href="" className="kelas">
-                <div className="image-thumb">
-                    {(image) ? <Image src={image} alt="alt" width={300} height={300} /> : null}
-                </div>
-                <div className="nama-kelas">
-                    <div className="text">
-                        <h6>{name}</h6>
-                        <p>{desc}</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    )
-}
+
 
 const hidden = () => {
     const items = document.getElementById('sidebar-container')
@@ -57,7 +42,7 @@ const SideBar = () => {
     const data = useSelector((state) => state.userReducer)
     const tambahKelasRef = useRef()
     const TambahKelas = () =>{
-        tambahKelasRef.current.classList.remove('hidden')
+        tambahKelasRef.current.classList.remove('add-hidden')
     }
     return (<>
         <div className="sidebar">
@@ -72,7 +57,7 @@ const SideBar = () => {
                 <div className="kelas-box">
                     {data.userdata.class?.map((clas, i) => {
                         return (
-                            <Kelas key={i} name="Pemrograman" desc="Lorem Ipsum dolor ..." />)
+                            <Kelas key={i} data={clas}/>)
                     })}
                 </div>
                 <a href="/user/signout" className="logout-container"><div className="icons">

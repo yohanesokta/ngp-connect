@@ -7,3 +7,7 @@ export const FetchProperty = (Body , method = "POST") => {
     body: JSON.stringify(Body)
   }
 }
+
+export const JSONtoArray = (element) => {
+  return [...Array(element.length)].map((_,i) => element[i])
+}

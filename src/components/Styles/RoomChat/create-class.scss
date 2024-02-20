@@ -12,10 +12,11 @@
         width: 400px;
         border-radius: 20px;
         margin: auto;
-        padding: 20px 0;
+        padding: 10px 0;
         .container {
             display: flex;
             width: 100%;
+            margin:  20px 0;
             label {
                 margin: auto;
                 font-weight: 500;
@@ -58,6 +59,6 @@
         }
     }
 }
-.hidden {
+.add-hidden{
     display: none;
 }

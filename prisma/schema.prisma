@@ -19,11 +19,21 @@ model Post {
 }
 
 model Users {
-  id            Int      @id @default(autoincrement())
-  sub           String      @unique
+  id            Int    @id @default(autoincrement())
+  sub           String @unique
   username      String
   email         String
   role          String
   image_profile String
-  class         String[]
+  class         Json   @default("[]")
+}
+
+model Class {
+  id         Int    @id @default(autoincrement())
+  uuid       String @unique
+  nama_kelas String
+  thub       String @default("")
+  desc       String @default("")
+  members    Json   @default("[]")
+  message    Json   @default("[]")
 }

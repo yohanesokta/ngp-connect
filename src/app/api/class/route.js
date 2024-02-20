@@ -4,7 +4,7 @@ export const POST = async (request) =>{
     const body = await request.json()
     const prisma = new PrismaClient();
     let message = "Upadate Complete"
-
+    console.log(body.create.name)
     try{
         await prisma.users.update({
             where : {
@@ -14,8 +14,15 @@ export const POST = async (request) =>{
                 class : body.update.data
             }
         })
+        await prisma.class.create({
+            data :{
+                uuid : body.create.uuid,
+                nama_kelas : body.create.name,
+                desc : body.create.desc
+            }
+        })
     }catch(err){
-        message = "Upadate Complete"
+        message = "Upadate Failed"
     }
 
     return Response.json({
@@ -31,7 +38,11 @@ export const POST = async (request) =>{
             data : User Class Data Previous  : [
                 Class 1,
                 Class 2
-            ]
+            ],
+        },
+        create : {
+            uuid : uuid class,
+            name : name class
         }
     }
 */
