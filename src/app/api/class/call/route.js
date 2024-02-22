@@ -18,13 +18,13 @@ export const POST = async (request) =>{
         data = {
             value : 1,
             data : result,
-            message : "FIND COMPLETED"
+            message : "find complete"
         }
     }catch(err){
         data = {
             value : 0,
             data : [],
-            message : "FIND FAILED"
+            message : "find failed"
         }
     }
 

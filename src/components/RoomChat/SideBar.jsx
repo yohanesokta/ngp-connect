@@ -46,7 +46,7 @@ const SideBar = () => {
     }
     return (<>
         <div className="sidebar">
-            <CreateClass refComp={tambahKelasRef} dataClass={data.userdata}/>
+            <CreateClass refComp={tambahKelasRef} />
             <div className="side-full" id="sidebar-container">
                 <Profile name={data.userdata.username} info={data.userdata.role} image={data.userdata.image_profile} />
                 <div className="btn-kelas">

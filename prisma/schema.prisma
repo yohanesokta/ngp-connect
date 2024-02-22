@@ -32,8 +32,8 @@ model Class {
   id         Int    @id @default(autoincrement())
   uuid       String @unique
   nama_kelas String
+  kode       String
   thub       String @default("")
   desc       String @default("")
   members    Json   @default("[]")
-  message    Json   @default("[]")
 }
