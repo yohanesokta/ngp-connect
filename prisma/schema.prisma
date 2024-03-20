@@ -19,8 +19,7 @@ model Post {
 }
 
 model Users {
-  id            Int    @id @default(autoincrement())
-  sub           String @unique
+  sub           String @id @unique
   username      String
   email         String
   role          String
@@ -29,11 +28,19 @@ model Users {
 }
 
 model Class {
-  id         Int    @id @default(autoincrement())
-  uuid       String @unique
+  uuid       String @id @unique
   nama_kelas String
   kode       String
   thub       String @default("")
   desc       String @default("")
   members    Json   @default("[]")
+}
+
+model Chat {
+  uuid  String @id @unique
+  from  String
+  type  String  @default("text")
+  text String @default("")
+  media String @default("")
+  time  DateTime @updatedAt
 }

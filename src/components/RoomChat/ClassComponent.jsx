@@ -1,5 +1,7 @@
 import { FetchProperty } from "@/libs/property/FetchProperty"
+import { UpdateClass } from "@/redux/features/user-slice"
 import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
 
 const GetClas = async (state,current,data) =>
 {
@@ -11,14 +13,19 @@ const GetClas = async (state,current,data) =>
 }
 
 const Kelas = ({data}) => {
+    const dispatch = useDispatch();
+
    const [Class , SetClass] = useState()
    GetClas(SetClass,Class,data)
-   useEffect( ()=>{
-},[])
     const image = false
+
+    const ViewClass = () => {
+        dispatch(UpdateClass(Class))
+    }
+
     return (
         <div className="kelas-container">
-            <a href="" className="kelas">
+            <div className="kelas" onClick={ViewClass}>
                 <div className="image-thumb">
                     {(image) ? <Image src={""} alt="alt" width={300} height={300} /> : null}
                 </div>
@@ -28,7 +35,7 @@ const Kelas = ({data}) => {
                         <p>{Class?.desc}</p>
                     </div>
                 </div>
-            </a>
+            </div>
         </div>
     )
 }

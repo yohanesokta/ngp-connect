@@ -134,6 +134,7 @@
         height: 120px;
         display: flex;
         .kelas {
+            cursor: pointer;
             text-decoration: none;
             color: black;
             box-shadow: 0 0 2px gray;
@@ -166,6 +167,18 @@
                         height: 12pt;
                         overflow: hidden;
                         display: flex;
+                    }
+                }
+            }
+        }
+        .kelas:hover{
+            transition: .3s ease;
+            background-color: rgb(178, 178, 239);
+            color: white;
+            .nama-kelas{
+                .text{
+                    p{
+                        color: white;
                     }
                 }
             }

@@ -9,7 +9,7 @@ const Profile = ({ name, info, image }) => {
     return (<div className="profile-container">
         <div className="profile">
             <div className="foto-profile">
-                <Image src={image ?? "/"} width={80} height={80} alt="Images" />
+                {(image) ? <Image src={image} width={80} height={80} alt="Images" /> : null}
             </div>
             <div className="name-profile">
                 <h5>{name}</h5>

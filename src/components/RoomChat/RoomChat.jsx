@@ -3,27 +3,27 @@
 import Navigation from "./Navigation"
 import Message from "./Message"
 import "@/components/Styles/RoomChat/page.scss"
-
-
+import { useState , useEffect } from "react"
+import { useSelector } from "react-redux"
 
 const RoomChat = () => {
+    const [RoomData, SetRoomData] = useState('') 
+    let data = useSelector((state) => state.userReducer)
+    useEffect(() => {
+        if(data.userclass.uuid){
+            SetRoomData(<ClassRoom data={data.userclass}/>)
+        }
+    }, [data]);
+    
+    const ClassRoom = ({data}) => {
+        return (<>
 
-
-    return (
-        <div className="RoomChat-container">
-            <Navigation />
+            <Navigation name={data.nama_kelas} anggota={data.members.length}/>
             <div className="container">
                 <div className="chat">
                     <div className="message" id="message-field">
-                        <Message data={{ text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo fuga dicta iste suscipit aliquid aut voluptatibus saepe natus soluta, nobis ducimus ipsum? Hic est possimus quia labore molestiae culpa autem facere magnam placeat ipsa! Mollitia dignissimos voluptates architecto soluta ad." }} />
+                        <Message data={{ text: "Lorem ipsum dolor sit amet consectetur adipisicing elit" }} />
                         <Message fromMe={true} data={{ text: "Lorem Test 10" }} />
-                        <Message fromMe={true} data={{ text: "Lorem Test 11" }} />
-                        <Message fromMe={true} data={{ text: "Lorem Test 12" }} />
-                        <Message data={{ text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.  Mollitia dignissimos voluptates architecto soluta ad." }} />
-                        <Message data={{ text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.  Mollitia dignissimos voluptates architecto soluta ad." }} />
-                        <Message fromMe={true} data={{ text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.  Mollitia dignissimos voluptates architecto soluta ad." }} />
-                        <Message fromMe={true} data={{ text: "Lorem Test 11" }} />
-                        <Message fromMe={true} data={{ text: "Lorem Test 12" }} />
                     </div>
                     <form action="">
                         <div className="input-message">
@@ -35,6 +35,12 @@ const RoomChat = () => {
                 </div>
                 <div className="anggota"></div>
             </div>
+        </>)
+    }
+
+    return (
+        <div className="RoomChat-container">
+            {RoomData}
         </div>
     )
 }
