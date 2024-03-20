@@ -30,7 +30,6 @@ const CreateClass = ({ refComp }) => {
         let data = useSelector((state) => state.userReducer)
         data = data.userdata
         const BtnSubmit = () => {
-            console.log('click')
             btnSubmit.current.disabled = true;
             const sub = data.sub
             const NewClass = JSONtoArray(data.class)

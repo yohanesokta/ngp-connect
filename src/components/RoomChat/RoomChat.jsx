@@ -16,9 +16,9 @@ const RoomChat = () => {
     }, [data]);
     
     const ClassRoom = ({data}) => {
+        console.log(data)
         return (<>
-
-            <Navigation name={data.nama_kelas} anggota={data.members.length}/>
+            <Navigation name={data.nama_kelas} anggota={data.members.length} code={data.kode}/>
             <div className="container">
                 <div className="chat">
                     <div className="message" id="message-field">
