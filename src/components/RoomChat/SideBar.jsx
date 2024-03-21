@@ -5,11 +5,13 @@ import Image from "next/image";
 import CreateClass from "./CreateClass";
 import { useRef } from "react";
 import Kelas from "./ClassComponent";
+
 const Profile = ({ name, info, image }) => {
+
     return (<div className="profile-container">
         <div className="profile">
             <div className="foto-profile">
-                <Image src={image ?? "/"} width={80} height={80} alt="Images" />
+                {(image) ? <Image src={image} width={80} height={80} alt="Images" /> : null}
             </div>
             <div className="name-profile">
                 <h5>{name}</h5>
@@ -21,8 +23,6 @@ const Profile = ({ name, info, image }) => {
         </div>
     </div>)
 }
-
-
 
 const hidden = () => {
     const items = document.getElementById('sidebar-container')
@@ -36,8 +36,6 @@ const hidden = () => {
     }
 }
 
-
-
 const SideBar = () => {
     const data = useSelector((state) => state.userReducer)
     const tambahKelasRef = useRef()
@@ -45,6 +43,7 @@ const SideBar = () => {
         tambahKelasRef.current.classList.remove('add-hidden')
     }
     return (<>
+
         <div className="sidebar">
             <CreateClass refComp={tambahKelasRef} />
             <div className="side-full" id="sidebar-container">
@@ -68,6 +67,7 @@ const SideBar = () => {
             <button className="hidden" onClick={hidden}></button>
         </div >
     </>
+
     );
 };
 

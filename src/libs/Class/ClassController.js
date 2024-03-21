@@ -20,8 +20,10 @@ export const CreateClassControl = async(sub,data,name,desc) => {
 
     try{
         await fetch('/api/class/create/',FetchProperty(Body,"POST"))
+    }catch(err){
+        console.log('error')
     }finally{
-      //  window.location.reload()
+        window.location.reload()
     }
 }
 
@@ -31,7 +33,7 @@ export const JoinClassControl = async (input ,data) => {
         update : {
             sub : data.userdata.sub,
         },
-    },"UPDATE"))
+    },"POST"))
 
     const get = await result.json()
     if (get.code == 1){

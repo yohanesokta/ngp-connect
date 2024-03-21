@@ -1,7 +1,6 @@
 import "@/components/Styles/RoomChat/create-class.scss"
 import { CreateClassControl, JoinClassControl } from "@/libs/Class/ClassController"
-import { FetchProperty, JSONtoArray } from "@/libs/property/FetchProperty"
-import { useRouter } from "next/router"
+import { JSONtoArray } from "@/libs/property/FetchProperty"
 import { useRef, useState } from "react"
 import { useSelector } from "react-redux"
 
@@ -9,7 +8,6 @@ const CreateClass = ({ refComp }) => {
     const nameInput = useRef()
     const descInput = useRef()
     const joinInput = useRef()
-
     const ChoseeMenu = () => {
         return (<>
             <div className="form-container">
@@ -25,20 +23,21 @@ const CreateClass = ({ refComp }) => {
             </div>
         </>)
     }
-    const [Comp, SetComp] = useState(<ChoseeMenu />)
 
+    const [Comp, SetComp] = useState(<ChoseeMenu />)
     const AddClass = () => {
+        const btnSubmit = useRef()
         let data = useSelector((state) => state.userReducer)
         data = data.userdata
         const BtnSubmit = () => {
+            btnSubmit.current.disabled = true;
             const sub = data.sub
             const NewClass = JSONtoArray(data.class)
             const name = nameInput.current.value
             const desc = descInput.current.value
             CreateClassControl(sub, NewClass, name, desc)
         }
-
-        return (<>
+    return (<>
             <form action="#" onSubmit={(e) => { e.preventDefault() }}>
                 <div className="container">
                     <label htmlFor="class-name-create">Buat Kelas</label>
@@ -52,7 +51,7 @@ const CreateClass = ({ refComp }) => {
                 <div className="container">
                     <div className="submit-tambah">
                         <button onClick={btnHide}>Batal</button>
-                        <button type="submit" onClick={BtnSubmit} >Buat Kelas</button>
+                        <button ref={btnSubmit} type="submit" onClick={BtnSubmit} >Buat Kelas</button>
                     </div>
                 </div>
             </form>
@@ -65,12 +64,13 @@ const CreateClass = ({ refComp }) => {
         descInput.current.value = ''
         SetComp(<ChoseeMenu />)
     }
+
     const BtnJoinHide = () => {
         refComp.current.classList.add('add-hidden');
         joinInput.current.value = ''
         SetComp(<ChoseeMenu />)
     }
-    
+
     const JoinClass = () => {
         const PAvailable = useRef();
         const PNotfound = useRef();
@@ -91,7 +91,6 @@ const CreateClass = ({ refComp }) => {
             PAvailable.current.classList.add('join-code-mes-hide');
             PNotfound.current.classList.add('join-code-mes-hide');
         }
-
 
         return (<>
             <form action="#" onSubmit={(e) => { e.preventDefault() }}>
