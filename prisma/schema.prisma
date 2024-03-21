@@ -37,7 +37,8 @@ model Class {
 }
 
 model Chat {
-  uuid  String @id @unique
+  id    Int @id @default(autoincrement())
+  uuid  String
   from  String
   type  String  @default("text")
   text String @default("")

@@ -32,10 +32,10 @@ const Right = ({ data }) => {
     </>)
 }
 
-const Message = ({ fromMe, data }) => {
+const Message = ({ fromMe, data}) => {
     return (
         <>
-            {(fromMe) ? <Right data={data} /> : <Left data={data} />}
+            {(fromMe) ? <Right data={data} /> : <Left data={data}  />}
         </>
 
     )

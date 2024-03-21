@@ -5,7 +5,9 @@ import Image from "next/image";
 import CreateClass from "./CreateClass";
 import { useRef } from "react";
 import Kelas from "./ClassComponent";
+
 const Profile = ({ name, info, image }) => {
+
     return (<div className="profile-container">
         <div className="profile">
             <div className="foto-profile">
@@ -22,8 +24,6 @@ const Profile = ({ name, info, image }) => {
     </div>)
 }
 
-
-
 const hidden = () => {
     const items = document.getElementById('sidebar-container')
     if (items.classList.contains('side-full')) {
@@ -36,8 +36,6 @@ const hidden = () => {
     }
 }
 
-
-
 const SideBar = () => {
     const data = useSelector((state) => state.userReducer)
     const tambahKelasRef = useRef()
@@ -45,6 +43,7 @@ const SideBar = () => {
         tambahKelasRef.current.classList.remove('add-hidden')
     }
     return (<>
+
         <div className="sidebar">
             <CreateClass refComp={tambahKelasRef} />
             <div className="side-full" id="sidebar-container">
@@ -68,6 +67,7 @@ const SideBar = () => {
             <button className="hidden" onClick={hidden}></button>
         </div >
     </>
+
     );
 };
 

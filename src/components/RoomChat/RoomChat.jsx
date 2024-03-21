@@ -1,34 +1,47 @@
 'use client'
 
 import Navigation from "./Navigation"
-import Message from "./Message"
 import "@/components/Styles/RoomChat/page.scss"
-import { useState , useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useSelector } from "react-redux"
+import RenderChat from "./RenderChat"
+import { MessageSender } from "@/libs/Class/MessageSender"
 
 const RoomChat = () => {
-    const [RoomData, SetRoomData] = useState('') 
+
+    const form = useRef();
+    const message_input = useRef();
+    const [RoomData, SetRoomData] = useState('')
     let data = useSelector((state) => state.userReducer)
+    let {chat} = useSelector(state => state.chatReducer)
     useEffect(() => {
-        if(data.userclass.uuid){
-            SetRoomData(<ClassRoom data={data.userclass}/>)
+        if (data.userclass.uuid) {
+            SetRoomData(<ClassRoom data={data.userclass} />)
         }
+        
     }, [data]);
-    
-    const ClassRoom = ({data}) => {
+
+    const onMessageSubmit = (e) => {
+        e.preventDefault()
         console.log(data)
+        MessageSender(data.userclass.uuid,data.userdata.sub,message_input.current.value)
+        message_input.current.value = ""
+    }
+
+
+    const ClassRoom = ({ data }) => {
+        // console.log(data)
         return (<>
-            <Navigation name={data.nama_kelas} anggota={data.members.length} code={data.kode}/>
+            <Navigation name={data.nama_kelas} anggota={data.members.length} code={data.kode} />
             <div className="container">
                 <div className="chat">
                     <div className="message" id="message-field">
-                        <Message data={{ text: "Lorem ipsum dolor sit amet consectetur adipisicing elit" }} />
-                        <Message fromMe={true} data={{ text: "Lorem Test 10" }} />
+                        <RenderChat uuid={data.uuid}/>
                     </div>
-                    <form action="">
+                    <form action="" onSubmit={onMessageSubmit}>
                         <div className="input-message">
                             <button><i className="fa-solid fa-plus"></i></button>
-                            <input type="text" />
+                            <input type="text" ref={message_input}/>
                             <button><i className="fa-solid fa-paper-plane"></i></button>
                         </div>
                     </form>

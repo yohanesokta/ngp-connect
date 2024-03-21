@@ -19,7 +19,7 @@ const Fetching = async (session, stateData, stateComponents, UserData) => {
   if (session.user.sub) {
     let data = await fetch("/api/user/info", FetchProperty(session))
     data = await data.json()
-    stateData(data.data[0])
+    stateData(data.data)
     stateComponents(<Container />)
     return data
   }
