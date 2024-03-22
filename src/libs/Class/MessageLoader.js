@@ -9,5 +9,6 @@ export const MessageLoader = async(uuid) => {
         return data
     }catch( err){
         console.log('error load message')
+        return false
     }
 }

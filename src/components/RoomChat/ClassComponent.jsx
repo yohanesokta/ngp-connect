@@ -1,6 +1,6 @@
 import { ClassLoader } from "@/libs/Class/ClassLoader"
 import { FetchProperty } from "@/libs/property/FetchProperty"
-import { setChat } from "@/redux/features/chat-slice"
+import { setChat, updateUser } from "@/redux/features/chat-slice"
 import { UpdateClass } from "@/redux/features/user-slice"
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
@@ -27,6 +27,7 @@ const Kelas = ({data}) => {
         const data = ClassLoader(Class)
         data.then(e => {
             dispatch(setChat(Class.uuid))
+            dispatch(updateUser(e))
         })
         dispatch(UpdateClass(Class))
     }

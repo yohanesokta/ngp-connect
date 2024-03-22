@@ -6,7 +6,7 @@ const Left = ({ data }) => {
         <div className="field">
             <div className={"message-field"}>
                 <div className="profile">
-                    <Image src="/foto.webp" alt="[]" width={100} height={100} />
+                    <Image src={data?.image ?? "/foto.webp"} alt="[]" width={100} height={100} />
                 </div>
                 <div className="message-text">
                     <p>{data?.text}</p>
@@ -25,7 +25,7 @@ const Right = ({ data }) => {
                     <p>{data?.text}</p>
                 </div>
                 <div className="profile">
-                    <Image src="/foto.webp" alt="[]" width={100} height={100} />
+                    <Image src={data?.image ?? "/foto.webp"} alt="[]" width={100} height={100} />
                 </div>
             </div>
         </div>

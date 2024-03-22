@@ -14,7 +14,7 @@ project chat room untuk chat dan juga colaborasi antara dua orang atau lebih dal
 -   Prisma DB ( ✅ )
 -   Membering User ✅
 -   Login System (Google Oauth ✅ )
--   Message Content
+-   Message Content ✅
 -   Socket IO
 -   Connect Google Meet
 
