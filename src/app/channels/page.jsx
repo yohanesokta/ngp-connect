@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react"
 import { useEffect, useState } from "react"
 import { UpdateUser } from "@/redux/features/user-slice"
 import { useDispatch } from "react-redux"
+import { CheckUsers } from "../user/create/page"
 
 const Container = () => {
   return (<> <div className="room-container">
@@ -17,6 +18,9 @@ const Container = () => {
 }
 const Fetching = async (session, stateData, stateComponents, UserData) => {
   if (session.user.sub) {
+    fetch('/api/user/create/available',FetchProperty({sub : session.user.sub})).then(e => {
+      return e.json()
+    }).then(e => {if (e.value == 0) {window.location.href = "/user/create"}})
     let data = await fetch("/api/user/info", FetchProperty(session))
     data = await data.json()
     stateData(data.data)

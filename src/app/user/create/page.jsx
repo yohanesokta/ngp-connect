@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
 import LoadingPage from "@/components/user/LoadingPage"
 
-const CheckUsers = async(session,changeTag) => {
+export const CheckUsers = async(session,changeTag) => {
   if (!session.user.sub) {return}
   try{
     let data = await fetch('/api/user/create/available',{
@@ -22,7 +22,11 @@ const CheckUsers = async(session,changeTag) => {
     if (data.value == 1) {
       window.location.href = "/channels"
     }else if (data.value == 0){
+      if (changeTag){
         changeTag(<CreateComponent/>)
+      }else{
+        window.location.href ="/user/create"
+      }
     }
   }catch(error){
     return

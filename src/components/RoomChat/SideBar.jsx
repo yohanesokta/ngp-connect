@@ -47,14 +47,14 @@ const SideBar = () => {
         <div className="sidebar">
             <CreateClass refComp={tambahKelasRef} />
             <div className="side-full" id="sidebar-container">
-                <Profile name={data.userdata.username} info={data.userdata.role} image={data.userdata.image_profile} />
+                <Profile name={data.userdata?.username} info={data.userdata?.role} image={data.userdata?.image_profile} />
                 <div className="btn-kelas">
                     <button onClick={TambahKelas}>
                         Tambah Kelas
                     </button>
                 </div>
                 <div className="kelas-box">
-                    {data.userdata.class?.map((clas, i) => {
+                    {data.userdata?.class?.map((clas, i) => {
                         return (
                             <Kelas key={i} data={clas}/>)
                     })}

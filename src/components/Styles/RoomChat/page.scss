@@ -3,6 +3,8 @@
     height: 100vh;
     overflow-x: scroll;
     .container {
+        opacity: 1;
+        animation: OpasAnim 2s ease;
         display: flex;
         width: 100%;
         height: calc(100% - 70px);
@@ -56,6 +58,14 @@
             height: 100%;
             background-color: aqua;
         }
+    }
+}
+
+@keyframes OpasAnim {
+    from {
+        opacity: 0;
+    }to{
+        opacity: 1;
     }
 }
 
