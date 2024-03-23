@@ -1,8 +1,10 @@
 .RoomChat-container {
     flex: 1;
-    flex-grow: 1;
     height: 100vh;
+    overflow-x: scroll;
     .container {
+        opacity: 1;
+        animation: OpasAnim 2s ease;
         display: flex;
         width: 100%;
         height: calc(100% - 70px);
@@ -15,6 +17,7 @@
                 overflow-y: auto;
             }
             form {
+
                 width: 100%;
                 height: 70px;
                 display: flex;
@@ -29,6 +32,7 @@
                         padding: 0 2.5%;
                         border-radius: 20px;
                         height: 40px;
+                        min-width: 0px;
                         border: 1px solid gray;
                         outline: none;
                     }
@@ -55,4 +59,16 @@
             background-color: aqua;
         }
     }
+}
+
+@keyframes OpasAnim {
+    from {
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 550px){
+
 }

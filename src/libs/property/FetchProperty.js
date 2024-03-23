@@ -1,3 +1,4 @@
+
 export const FetchProperty = (Body , method = "POST") => {
   return {
     method : method,
@@ -8,6 +9,15 @@ export const FetchProperty = (Body , method = "POST") => {
   }
 }
 
+export const GETFetchProperty =() => {
+   return {
+      method : "GET",
+      headers :{
+        "Accept" : "*/*",
+        "Content-Type" : "application/json"
+      }
+   }
+}
 export const JSONtoArray = (element) => {
   return [...Array(element.length)].map((_,i) => element[i])
 }

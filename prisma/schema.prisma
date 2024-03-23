@@ -43,5 +43,7 @@ model Chat {
   type  String  @default("text")
   text String @default("")
   media String @default("")
-  time  DateTime @updatedAt
+  update  DateTime @updatedAt
+  time  String
+
 }

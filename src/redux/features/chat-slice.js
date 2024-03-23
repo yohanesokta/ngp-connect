@@ -3,7 +3,8 @@ const initialState = {
     chat : {
         active : false,
         chatID : "",
-        chat   : []
+        chat   : [],
+        user   : [],
     }
 }
 
@@ -17,10 +18,13 @@ export const chat = createSlice({
         },
         updateChat : (state,action) => {
             state.chat.chat = action.payload
+        },
+        updateUser : (state,action) => {
+            state.chat.user = action.payload
         }
 
     }
 })
 
-export const {setChat , updateChat} = chat.actions
+export const {setChat , updateChat , updateUser} = chat.actions
 export default chat.reducer

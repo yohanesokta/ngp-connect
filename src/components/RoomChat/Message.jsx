@@ -6,10 +6,11 @@ const Left = ({ data }) => {
         <div className="field">
             <div className={"message-field"}>
                 <div className="profile">
-                    <Image src="/foto.webp" alt="[]" width={100} height={100} />
+                    <Image src={data.userinfo?.image_profile ?? "/foto.webp"} alt="[]" width={100} height={100} />
                 </div>
                 <div className="message-text">
-                    <p>{data?.text}</p>
+                    <span>{`${data.userinfo?.username} -  ${data.chat.time}`}</span>
+                    <p>{data.chat?.text}</p>
                 </div>
             </div>
         </div>
@@ -22,20 +23,21 @@ const Right = ({ data }) => {
             <div className="gap-right"></div>
             <div className={"message-field right"}>
                 <div className="message-text">
-                    <p>{data?.text}</p>
+                    <span><div className="break"></div>{`${data.userinfo?.username} -  ${data.chat.time}`}</span>
+                    <p>{data.chat?.text}</p>
                 </div>
                 <div className="profile">
-                    <Image src="/foto.webp" alt="[]" width={100} height={100} />
+                    <Image src={data?.userinfo?.image_profile ?? "/foto.webp"} alt="[]" width={100} height={100} />
                 </div>
             </div>
         </div>
     </>)
 }
 
-const Message = ({ fromMe, data}) => {
+const Message = ({ fromMe, data }) => {
     return (
         <>
-            {(fromMe) ? <Right data={data} /> : <Left data={data}  />}
+            {(fromMe) ? <Right data={data} /> : <Left data={data} />}
         </>
 
     )
