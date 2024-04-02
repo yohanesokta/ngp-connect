@@ -1,0 +1,102 @@
+
+.menu-foto-setting{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7  );
+    z-index: 999;
+    top: 0;
+    left: 0;
+    .closed{
+        background-color: red;
+        z-index: 1;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .container-foto{
+        z-index: 2;
+        border-radius: 5px;
+        margin: auto;
+        width: 300px;
+        height: 300px;
+        background-color: white;
+        form{
+            width: 100%;
+            height: 100%;
+            .image{
+                position: relative;
+                margin: 30px 0;
+                width: 100%;
+                height: 50%;
+                display: flex;
+                img{
+                    border-radius: 50%;
+                    margin: auto;
+                    width: 150px;
+                    height: 150px;
+                    object-fit: cover;
+                }
+            }
+            .spinner{
+                position: absolute;
+                z-index: -1;
+                width: 158px;
+                background: rgb(65,60,196);
+                background: linear-gradient(94deg, rgba(65,60,196,1) 0%, rgba(255,255,255,1) 21%, rgba(255,255,255,1) 49%, rgba(255,255,255,1) 75%, rgba(57,0,255,1) 100%);
+                border-radius: 50%;
+                height:calc(100% + 8px);
+                top: 50%;
+                left: 50%;
+                animation: spinner 1s linear infinite;
+                transform: translate(-50%, -50%);
+            }
+            .btn-menu{
+                width: 90%;
+                margin-left: 5%;
+                display: flex;
+                justify-content: space-around;
+                label{
+                    padding: 5px 0;
+                    width: 40%;
+                    border: 1px solid gray;
+                    color: var(--color-primary);
+                    border-radius: 5px;
+                    font-size: 11pt;
+                    padding-right: 5px;
+                    i{
+                        margin: 0 5px 0 0;
+                        padding-left: 8px;
+                    }
+                }
+                button{
+                    width: 40%;
+                    border-radius: 5px;
+                    border: 1px solid gray;
+                    color: white;
+                    background-color: var(--color-primary);
+                    outline: none;
+                }
+                
+            }
+            input{
+                width: 0.1px;
+                height: .1px;
+                opacity: 0;
+            }
+        }
+    }
+}
+
+@keyframes spinner {
+    0%{
+        transform: translate(-50%, -50%) rotate(0deg) ;
+    }
+    to{
+        transform: translate(-50%, -50%) rotate(360deg) ;
+    }
+}
