@@ -74,6 +74,11 @@
             outline: none;
             border: none;
             margin: auto;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+        button:active{
+            background-color: rgb(144, 156, 212);
         }
     }
 }
