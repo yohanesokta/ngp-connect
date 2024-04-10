@@ -5,7 +5,10 @@ export const POST = async(request) => {
     try {
 
     const data = await prisma.chat.findMany({
-        where : {uuid : body.uuid}
+        where : {uuid : body.uuid},
+        orderBy : {
+            id : 'asc'
+        }
     })
     return Response.json(data)
     } catch (error){

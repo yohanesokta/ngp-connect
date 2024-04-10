@@ -84,12 +84,53 @@
                 width: 20%;
                 height: 100%;
                 display: flex;
+                position: relative;
                 a {
                     margin: auto;
                     svg {
+                        transition: .2s ease;
                         width: 20px;
                         height: 20px;
                         fill: var(--color-white);
+                    }
+                }
+                a:hover{
+                    svg{
+                        transform: rotate(45deg);
+                        fill: rgb(136, 136, 255);
+                    }
+                }
+                .setting-con{
+                    position: absolute;
+                    z-index: 9999;
+                    left: 20px;
+                    top: 50px;
+                    border-radius: 10px;
+                    width: 200px;
+                    background-color: white;
+                    overflow: hidden;
+                    box-shadow: 0 0 3px rgb(161, 161, 161);
+                    a{
+                        cursor: pointer;
+                    }
+                    ul{
+                        cursor: pointer;
+                        font-size: 10pt;
+                        padding: 10px 15px;
+                        transition: .2s ease;
+                        i{
+                        font-size: 12pt;
+
+                            color: var(--color-primary);
+                            margin-right: 10px;
+                        }
+                    }
+                    ul:hover{
+                        background-color: var(--color-opas-primary);
+                        color: white;
+                        i{
+                            color: white;
+                        }
                     }
                 }
             }
@@ -156,8 +197,11 @@
                 height: 100%;
                 .text {
                     margin: auto 0;
+                    width: 180px;
+                    overflow: hidden;
                     h6 {
                         font-size: medium;
+                        text-wrap: nowrap;
                     }
                     p {
                         margin-left: 5px;
@@ -272,7 +316,6 @@
         background-color: var(--color-primary);
         display: flex;
         text-decoration: none;
-
         outline: none;
         border: none;
         color: white;

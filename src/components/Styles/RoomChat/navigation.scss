@@ -15,6 +15,9 @@
             color: var(--color-dark);
             h5 {
                 font-size: large;
+                max-width: 300px;
+            text-wrap: nowrap;
+            overflow: hidden;
             }
             span {
                 font-size: small;
@@ -74,6 +77,11 @@
             outline: none;
             border: none;
             margin: auto;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+        button:active{
+            background-color: rgb(144, 156, 212);
         }
     }
 }

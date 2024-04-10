@@ -8,3 +8,7 @@ export function generateUniqueCode(length = 6) {
     return result;
 
 }
+
+export function TrimsChecker(str){
+  return !str.replace(/\s/g, '').length;
+}

@@ -16,6 +16,7 @@ project chat room untuk chat dan juga colaborasi antara dua orang atau lebih dal
 -   Login System (Google Oauth ✅ )
 -   Message Content ✅
 -   Socket IO ✅ (80%)
+-   Cloudinary Assets ✅
 -   Connect Google Meet
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

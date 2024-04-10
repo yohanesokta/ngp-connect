@@ -1,6 +1,16 @@
+'use client'
+
 import "@/components/Styles/RoomChat/navigation.scss"
-import { useRef } from "react"
+import { useRef, useState } from "react"
+import SubMenuUserChat from "./SubMenu/SubMenuUserChat"
 const Navigation = ({name,anggota,code}) => {
+
+    const [onMenu, setOnMenu] = useState(false)
+
+    const SettingMenu = () => {
+        (onMenu) ? setOnMenu(false) : setOnMenu(true)
+    }
+
     const tooltipInfo = useRef()
     const CopyCode = (e) => {
         navigator.clipboard.writeText(e.target.innerHTML)
@@ -10,7 +20,7 @@ const Navigation = ({name,anggota,code}) => {
         <div className="room-nav-container">
             <div className="name-content">
                 <div className="name">
-                    <h5>{name}</h5>
+                    <h5 onClick={SettingMenu}>{name}</h5>
                     <span>Anggota : {anggota}</span>
                 </div>
             </div>
@@ -21,7 +31,8 @@ const Navigation = ({name,anggota,code}) => {
                 <p ref={tooltipInfo}>Copy Code</p>
             </div>
             <div className="users-container">
-                <button><i className="fa-solid fa-users"></i></button>
+                {(onMenu)? <SubMenuUserChat/> : null}
+                <button onClick={SettingMenu}><i class="fa-solid fa-bars"></i></button>
             </div>
         </div>
     )
