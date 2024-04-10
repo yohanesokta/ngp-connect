@@ -20,7 +20,7 @@ const Navigation = ({name,anggota,code}) => {
         <div className="room-nav-container">
             <div className="name-content">
                 <div className="name">
-                    <h5>{name}</h5>
+                    <h5 onClick={SettingMenu}>{name}</h5>
                     <span>Anggota : {anggota}</span>
                 </div>
             </div>

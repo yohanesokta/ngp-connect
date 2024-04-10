@@ -1,6 +1,7 @@
 import "@/components/Styles/RoomChat/create-class.scss"
 import { CreateClassControl, JoinClassControl } from "@/libs/Class/ClassController"
 import { JSONtoArray } from "@/libs/property/FetchProperty"
+import { TrimsChecker } from "@/libs/property/RandomString"
 import { useRef, useState } from "react"
 import { useSelector } from "react-redux"
 
@@ -30,23 +31,27 @@ const CreateClass = ({ refComp }) => {
         let data = useSelector((state) => state.userReducer)
         data = data.userdata
         const BtnSubmit = () => {
-            btnSubmit.current.disabled = true;
-            const sub = data.sub
-            const NewClass = JSONtoArray(data.class)
             const name = nameInput.current.value
             const desc = descInput.current.value
-            CreateClassControl(sub, NewClass, name, desc)
+
+            if (!TrimsChecker(name) && !TrimsChecker(desc)) {
+                btnSubmit.current.disabled = true;
+                const sub = data.sub
+                const NewClass = JSONtoArray(data.class)
+
+                CreateClassControl(sub, NewClass, name, desc)
+            }
         }
-    return (<>
+        return (<>
             <form action="#" onSubmit={(e) => { e.preventDefault() }}>
                 <div className="container">
                     <label htmlFor="class-name-create">Buat Kelas</label>
                 </div>
                 <div className="container">
-                    <input ref={nameInput} type="text" id="class-name-create" autoComplete="off" placeholder="Nama kelas" />
+                    <input ref={nameInput} type="text" id="class-name-create" autoComplete="off" placeholder="Nama kelas" required />
                 </div>
                 <div className="container">
-                    <input ref={descInput} type="text" placeholder="Deskripsi Kelas" autoComplete="off" />
+                    <input ref={descInput} type="text" placeholder="Deskripsi Kelas" autoComplete="off" required />
                 </div>
                 <div className="container">
                     <div className="submit-tambah">
@@ -78,13 +83,15 @@ const CreateClass = ({ refComp }) => {
 
         const BtnJoinSubmit = () => {
             const input = joinInput.current.value
-            JoinClassControl(input,data).then((e)=>{
+            if (!TrimsChecker(input)) {
+                JoinClassControl(input, data).then((e) => {
                     if (e.code == 0) {
                         PNotfound.current.classList.remove('join-code-mes-hide')
-                    }else if (e.code == 3) {
+                    } else if (e.code == 3) {
                         PAvailable.current.classList.remove('join-code-mes-hide')
                     }
-            })
+                })
+            }
         }
 
         const HiddenMessage = () => {
@@ -98,7 +105,7 @@ const CreateClass = ({ refComp }) => {
                     <label htmlFor="kode-name-create">Join Kelas</label>
                 </div>
                 <div className="container">
-                    <input ref={joinInput} type="text" id="kode-name-create" autoComplete="off" placeholder="Kode Kelas" onInput={HiddenMessage}/>
+                    <input ref={joinInput} type="text" id="kode-name-create" autoComplete="off" placeholder="Kode Kelas" onInput={HiddenMessage} required={"Lawong Gak Ada Codemu"}/>
                 </div>
                 <p className="join-code-mes-hide" ref={PNotfound}>code tidak terdaftar</p>
                 <p className="join-code-mes-hide" ref={PAvailable}>kelas sudah ada</p>

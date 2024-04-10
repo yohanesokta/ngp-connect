@@ -197,8 +197,11 @@
                 height: 100%;
                 .text {
                     margin: auto 0;
+                    width: 180px;
+                    overflow: hidden;
                     h6 {
                         font-size: medium;
+                        text-wrap: nowrap;
                     }
                     p {
                         margin-left: 5px;

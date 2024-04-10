@@ -27,7 +27,7 @@ const RenderChat = ({uuid , container }) => {
             {chats.chat.chat.map((e,i) => {
                  let userinfo = {
                     data : {
-                        image_profile : "/foto.webp"
+                        image_profile : "/profile.png"
                     }
                 }
                 if(chats.chat.user){
