@@ -18,9 +18,9 @@ const Container = () => {
 }
 const Fetching = async (session, stateData, stateComponents, UserData) => {
   if (session.user.sub) {
-    fetch('/api/user/create/available',FetchProperty({sub : session.user.sub})).then(e => {
+    fetch('/api/user/create/available', FetchProperty({ sub: session.user.sub })).then(e => {
       return e.json()
-    }).then(e => {if (e.value == 0) {window.location.href = "/user/create"}})
+    }).then(e => { if (e.value == 0) { window.location.href = "/user/create" } })
     let data = await fetch("/api/user/info", FetchProperty(session))
     data = await data.json()
     stateData(data.data)
@@ -30,7 +30,7 @@ const Fetching = async (session, stateData, stateComponents, UserData) => {
 }
 
 
-const page = () => {
+const Page = () => {
   const { data: session } = useSession()
   const [UserData, SetUserData] = useState(false)
   const [Comp, SetComp] = useState(<LoadingPage />)
@@ -39,11 +39,11 @@ const page = () => {
 
 
   useEffect(() => {
-    Fetching(session, SetUserData, SetComp, UserData)
+    Fetching(session, SetUserData, SetComp, UserData ?? none)
   }, [session])
 
   useEffect(() => {
-      dispatch(UpdateUser(UserData))
+    dispatch(UpdateUser(UserData))
   }, [UserData])
 
 
@@ -54,4 +54,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

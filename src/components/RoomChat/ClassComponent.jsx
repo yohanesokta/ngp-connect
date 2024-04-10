@@ -3,24 +3,22 @@ import { FetchProperty } from "@/libs/property/FetchProperty"
 import { setChat, updateUser } from "@/redux/features/chat-slice"
 import { UpdateClass } from "@/redux/features/user-slice"
 import { useEffect, useState } from "react"
+import Image from "next/image"
 import { useDispatch } from "react-redux"
 
-const GetClas = async (state,current,data) =>
-
-{
-    if (!current) 
-    {
-    state(1)
-    const result = await (await fetch(`/api/class/call`,FetchProperty({uuid : data},"POST"))).json()
-    state(result.data)
+const GetClas = async (state, current, data) => {
+    if (!current) {
+        state(1)
+        const result = await (await fetch(`/api/class/call`, FetchProperty({ uuid: data }, "POST"))).json()
+        state(result.data)
     }
 }
 
-const Kelas = ({data}) => {
+const Kelas = ({ data }) => {
 
     const dispatch = useDispatch();
-    const [Class , SetClass] = useState()
-    GetClas(SetClass,Class,data)
+    const [Class, SetClass] = useState()
+    GetClas(SetClass, Class, data)
     const image = false
 
     const ViewClass = () => {
